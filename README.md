@@ -8,7 +8,7 @@
 
 ## Description
 
-This [**Docker**](https://www.docker.com/) image can be used to create an RTMP server for multimedia / video streaming using [**Nginx**](http://nginx.org/en/) and [**nginx-rtmp-module**](https://github.com/arut/nginx-rtmp-module), built from the current latest sources (Nginx 1.11.3 and nginx-rtmp-module 1.1.9).
+This [**Docker**](https://www.docker.com/) image can be used to create an RTMP server for multimedia / video streaming using [**Nginx**](http://nginx.org/en/) and [**nginx-rtmp-module**](https://github.com/arut/nginx-rtmp-module), built from the current latest sources (Nginx 1.15.0 and nginx-rtmp-module 1.2.1).
 
 This was inspired by other similar previous images from [dvdgiessen](https://hub.docker.com/r/dvdgiessen/nginx-rtmp-docker/), [jasonrivers](https://hub.docker.com/r/jasonrivers/nginx-rtmp/), [aevumdecessus](https://hub.docker.com/r/aevumdecessus/docker-nginx-rtmp/) and by an [OBS Studio post](https://obsproject.com/forum/resources/how-to-set-up-your-own-private-rtmp-server-using-nginx.50/).
 
@@ -20,7 +20,6 @@ The main purpose (and test case) to build it was to allow streaming from [**OBS 
 
 ## Details
 
-
 ## How to use
 
 * For the simplest case, just run a container with this image:
@@ -30,7 +29,6 @@ docker run -d -p 1935:1935 --name nginx-rtmp tiangolo/nginx-rtmp
 ```
 
 ## How to test with OBS Studio and VLC
-
 
 * Run a container with the command above
 
@@ -42,7 +40,7 @@ docker run -d -p 1935:1935 --name nginx-rtmp tiangolo/nginx-rtmp
 * In the "URL" enter the `rtmp://<ip_of_host>/live` replacing `<ip_of_host>` with the IP of the host in which the container is running. For example: `rtmp://192.168.0.30/live`
 * In the "Stream key" use a "key" that will be used later in the client URL to display that specific stream. For example: `test`
 * Click the "OK" button
-* In the section "Sources" click de "Add" button (`+`) and select a source (for example "Display Capture") and configure it as you need
+* In the section "Sources" click de "Add" button (`+`) and select a source (for example "Screen Capture") and configure it as you need
 * Click the "Start Streaming" button
 
 
@@ -80,7 +78,7 @@ events {}
 rtmp {
     server {
         listen 1935;
-        listen [::]:1935 ipv6only=on;    
+        listen [::]:1935 ipv6only=on;
 
         application live {
             live on;
